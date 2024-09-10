@@ -1,4 +1,5 @@
 [![Dependabot Updates](https://github.com/starlean-git/dockerdoo/actions/workflows/dependabot/dependabot-updates/badge.svg)](https://github.com/starlean-git/dockerdoo/actions/workflows/dependabot/dependabot-updates)
+[![Unit Tests](https://github.com/starlean-git/dockerdoo/actions/workflows/tests.yaml/badge.svg)](https://github.com/starlean-git/dockerdoo/actions/workflows/tests.yaml)
 
 # Dockerized Odoo.
 
