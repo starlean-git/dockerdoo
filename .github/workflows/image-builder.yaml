@@ -92,8 +92,8 @@ jobs:
         with:
           # Use the same image list pattern as the merge job for consistency
           images: |
-            ghcr.io/iterativo-git/${{ env.GITHUB_REPOSITORY_NAME_PART_SLUG }}
-            iterativodo/${{ env.GITHUB_REPOSITORY_NAME_PART_SLUG }},enable=${{ github.event_name != 'pull_request' }}
+            ghcr.io/starlean-git/${{ env.GITHUB_REPOSITORY_NAME_PART_SLUG }}
+            starlean/${{ env.GITHUB_REPOSITORY_NAME_PART_SLUG }},enable=${{ github.event_name != 'pull_request' }}
 
       # Setup Docker Buildx
       - name: Set up Docker Buildx
@@ -119,7 +119,7 @@ jobs:
           platforms: ${{ matrix.platform }}
           # We must use a single registry for the digest source
           # GitHub Container Registry is used regardless of PR/non-PR status
-          outputs: type=image,push-by-digest=true,name=ghcr.io/iterativo-git/${{ env.GITHUB_REPOSITORY_NAME_PART_SLUG }},push=true
+          outputs: type=image,push-by-digest=true,name=ghcr.io/starlean-git/${{ env.GITHUB_REPOSITORY_NAME_PART_SLUG }},push=true
           # Don't read from the cache if the caller disabled it.
           # https://docs.docker.com/engine/reference/commandline/buildx_build/#options
           no-cache: ${{ inputs.no_cache }}
@@ -187,8 +187,8 @@ jobs:
         with:
           # list of Docker images to use as base name for tags
           images: |
-            ghcr.io/iterativo-git/${{ env.GITHUB_REPOSITORY_NAME_PART_SLUG }}
-            iterativodo/${{ env.GITHUB_REPOSITORY_NAME_PART_SLUG }},enable=${{ github.event_name != 'pull_request' }}
+            ghcr.io/starlean-git/${{ env.GITHUB_REPOSITORY_NAME_PART_SLUG }}
+            starlean/${{ env.GITHUB_REPOSITORY_NAME_PART_SLUG }},enable=${{ github.event_name != 'pull_request' }}
           # Use predefined flavor with version customization
           flavor: |
             latest=false
@@ -202,7 +202,7 @@ jobs:
         id: registry-vars
         run: |
           # Base image name used as the source for digests
-          SOURCE_IMAGE="ghcr.io/iterativo-git/${{ env.GITHUB_REPOSITORY_NAME_PART_SLUG }}"
+          SOURCE_IMAGE="ghcr.io/starlean-git/${{ env.GITHUB_REPOSITORY_NAME_PART_SLUG }}"
           echo "SOURCE_IMAGE=${SOURCE_IMAGE}" >> $GITHUB_ENV
 
           # Extract all target registries/images from metadata

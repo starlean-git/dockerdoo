@@ -49,8 +49,8 @@ jobs:
       - name: Pull and Run Tests in Docker Image
         continue-on-error: false
         run: |
-          docker pull ghcr.io/iterativo-git/dockerdoo:${{ env.GITHUB_REF_SLUG }}-${{ inputs.odoo_version }}
-          docker run --env-file <(env | grep -E 'RUN_TESTS|LOG_LEVEL|EXTRA_MODULES|PGHOST') --network="host" --name odoo -t ghcr.io/iterativo-git/dockerdoo:${{ env.GITHUB_REF_SLUG }}-${{ inputs.odoo_version }}
+          docker pull ghcr.io/starlean-git/dockerdoo:${{ env.GITHUB_REF_SLUG }}-${{ inputs.odoo_version }}
+          docker run --env-file <(env | grep -E 'RUN_TESTS|LOG_LEVEL|EXTRA_MODULES|PGHOST') --network="host" --name odoo -t ghcr.io/starlean-git/dockerdoo:${{ env.GITHUB_REF_SLUG }}-${{ inputs.odoo_version }}
         env:
           RUN_TESTS: "1"
           LOG_LEVEL: test
